@@ -1,5 +1,6 @@
 import { Switch, Route } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import { Button, Form, Grid, Header, Image, Message, Segment, Checkbox } from 'semantic-ui-react'
 
 function SignUp({handleSetUser}) {
   const [username, setUsername] = useState("");
@@ -7,6 +8,7 @@ function SignUp({handleSetUser}) {
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [lastName, setLastName] = useState('')
   const [firstName, setFirstName] = useState('')
+  const [isTeacher, setIsTeacher] = useState(false)
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -21,6 +23,7 @@ function SignUp({handleSetUser}) {
         password_confirmation: passwordConfirmation,
         first_name: firstName,
         last_name: lastName,
+        is_teacher: isTeacher
       }),
     })
     .then((r) => r.json())
@@ -33,49 +36,71 @@ function SignUp({handleSetUser}) {
         }
     });
   }
-
+  function handleToggle(){
+    setIsTeacher(!isTeacher)
+  }
     return(
-        <div className = "signup">
-                    <form onSubmit={handleSubmit}>
-                        <label htmlFor="username">Username:</label>
-                        <input
-                            type="text"
-                            id="username"
+        <Grid textAlign='center' style={{ height: '100vh'}} verticalAlign='middle'>
+                <Grid.Column style={{ maxWidth: 450 }}>
+                    <Header as='h2' color='teal' textAlign='center' block >
+                        Sign Up
+                    </Header>
+                    <Form size='large' onSubmit={handleSubmit}>
+                        <Segment stacked>
+                            <Form.Input 
+                            fluid icon='user' 
+                            iconPosition='left' 
+                            placeholder='UserName' 
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
-                        />
-                        <label htmlFor="password">Password:</label>
-                        <input
-                            type="password"
-                            id="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                        <label htmlFor="password_confirmation">Confirm Password:</label>
-                        <input
-                            type="password"
-                            id="password_confirmation"
-                            value={passwordConfirmation}
-                            onChange={(e) => setPasswordConfirmation(e.target.value)}
-                        />
-                        <label htmlFor="firstName">First Name</label>
-                        <input
-                            type="text"
-                            id="firstName"
-                            value={firstName}
-                            onChange={(e) => setFirstName(e.target.value)}
-                        />
-                        <label htmlFor="lastName">Last Name</label>
-                        <input
-                            type="text"
-                            id="lastName"
-                            value={lastName}
-                            onChange={(e) => setLastName(e.target.value)}
-                        />
-                        <button type="submit">Submit</button>
-                    </form>
-            
-        </div>
+                            />
+                            <Form.Input
+                                fluid
+                                icon='lock'
+                                iconPosition='left'
+                                placeholder='Password'
+                                type='password'
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                             <Form.Input
+                                fluid
+                                icon='lock'
+                                iconPosition='left'
+                                placeholder='Confirm Password'
+                                type='password'
+                                value={passwordConfirmation}
+                                onChange={(e) => 
+                                    {
+                                        setPasswordConfirmation(e.target.value)
+                                    }}
+                            />
+                            <Form.Input 
+                                icon='user'
+                                iconPosition='left'
+                                placeholder='FirstName'
+                                value={firstName}
+                                onChange={(e) => setFirstName(e.target.value)}
+                            />
+                            <Form.Input 
+                                icon='user'
+                                iconPosition='left'
+                                placeholder='LastName'
+                                value={lastName}
+                                onChange={(e) => setLastName(e.target.value)}
+                            />
+                            <Checkbox toggle label='Teacher?' checked={isTeacher} onChange={handleToggle}/>
+                            
+                            <Button color='teal' size='large' type='submit'>
+                                Sign Up
+                            </Button>
+                        </Segment>
+                    </Form>
+                    <Message>
+                       Already Have An Account? <a href='/login'>Login</a>
+                    </Message>
+                </Grid.Column>
+        </Grid>
     )
 }
 

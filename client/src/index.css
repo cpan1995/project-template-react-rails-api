@@ -11,6 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.ui.teal.button{
+  margin: auto;
+  
+}
 
-.loginPage{
+.ui.toggle.checkbox{
+  float: left;
+  padding-top: 1em
 }

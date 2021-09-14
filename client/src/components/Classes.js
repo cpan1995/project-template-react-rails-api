@@ -17,7 +17,7 @@ function Classes({ teacherBool, user }){
         <div className = 'allclasses'>
              <ul className ='classlist'>
                  {classes.map((classs) => (
-                     <Class classs={classs}/>
+                     <Class classs={classs} key = {classs.id}/>
                  ))}
              </ul>
         </div>        

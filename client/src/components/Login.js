@@ -19,15 +19,15 @@ function Login({ handleSetUser }){
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-              username: username,
-              password: password
+              username: e.target[0].value,
+              password: e.target[1].value
            }),
         })
           .then((r) => r.json())
            .then((user) => 
            {
             console.log(user)
-            //handleSetUser(user)
+            handleSetUser(user)
             });
       }
       function handleSignUp(){
@@ -46,35 +46,13 @@ function Login({ handleSetUser }){
       }
 
     return(
-        // <div className = 'login'>
-        //     <form className = 'loginform' onSubmit = {handleSubmit}>
-        //             <label htmlFor="username">Username:</label>
-        //             <input
-        //                 type="text"
-        //                 id="username"
-        //                 value={username}
-        //                 onChange={(e) => setUsername(e.target.value)}
-        //             />
-        //             <label htmlFor="password">Password:</label>
-        //             <input
-        //                 type="password"
-        //                 id="password"
-        //                 value={password}
-        //                 onChange={(e) => setPassword(e.target.value)}
-        //             />
-        //             <button>Login</button>
-        //             <button onClick = {handleSignUp}>
-        //                SignUp
-        //             </button>
-        //     </form>
-        // </div>
         <div>
             <Grid textAlign='center' style={{ height: '100vh'}} verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450 }}>
                     <Header as='h2' color='teal' textAlign='center' block >
                         Log-in to your account
                     </Header>
-                    <Form size='large'>
+                    <Form size='large' onSubmit={handleSubmit}>
                         <Segment stacked>
                             <Form.Input fluid icon='user' iconPosition='left' placeholder='UserName' />
                             <Form.Input
@@ -85,9 +63,9 @@ function Login({ handleSetUser }){
                                 type='password'
                             />
 
-                            <Button color='teal' fluid size='large' onClick = {handleTest}>
+                            <Form.Button color='teal' fluid size='large'>
                                 Login
-                            </Button>
+                            </Form.Button>
                         </Segment>
                     </Form>
                     <Message>
@@ -98,5 +76,4 @@ function Login({ handleSetUser }){
         </div>
     )
 }
-
 export default Login

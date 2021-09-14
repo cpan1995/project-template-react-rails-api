@@ -1,7 +1,7 @@
 class SchoolClassesController < ApplicationController   
 rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
-    def user_classes
+    def class_list
         user = User.find(params[:id])
         classes = user.classes
         render json: classes       
