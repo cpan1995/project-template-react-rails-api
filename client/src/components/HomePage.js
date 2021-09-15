@@ -7,6 +7,7 @@ import Tabs from './Tabs'
 import Students from './Students'
 import Complaints from './Complaints';
 import Classes from './Classes';
+import Profile from './Profile'
 function HomePage() {
 
     const [isLoggedIn, setLogin] = useState(false)
@@ -61,13 +62,16 @@ function HomePage() {
                 <Route exact path = '/classes'>
                     <Classes user = {user}/>
                 </Route>
-                <Route path = '/students'>
+                <Route exact path = '/students'>
                     <Students user = {user}/>
                 </Route>
-                <Route path ='/complaints'>
+                <Route exact path ='/complaints'>
                     <Complaints/>
                 </Route>
-            </Switch>
+                <Route exact path ='/profile'>
+                    <Profile user = {user} setUser = {setUser}/>
+                </Route>
+            </Switch> 
         </div>
     )
 }

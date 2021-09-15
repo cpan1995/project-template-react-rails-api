@@ -26,10 +26,9 @@ function Login({ handleSetUser }){
           .then((r) => r.json())
            .then((user) => 
            {
-            console.log(user)
             handleSetUser(user)
             });
-      }
+    }
       function handleSignUp(){
         history.push('/signup')
       }

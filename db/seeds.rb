@@ -7,6 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # user1 = User.create(username: "cpan1995", password_digest: "123123" first_name: "bob", last_name: "nice", is_teacher: true)
 
-User.create(username: 'test', password_digest: '123123', first_name: '', last_name: '', is_teacher: true, teacher_id:)
-User.create(username: 'test', password_digest: '123123', first_name: '', last_name: '', is_teacher: true, teacher_id:)
-User.create(username: 'test', password_digest: '123123', first_name: '', last_name: '', is_teacher: true, teacher_id:)
+# User.create(username: 'test', password_digest: '123123', first_name: 'sam', last_name: 'stone', is_teacher: true)
+# User.create(username: 'test', password_digest: '123123', first_name: '', last_name: '', is_teacher: true, teacher_id:)
+# User.create(username: 'test', password_digest: '123123', first_name: '', last_name: '', is_teacher: true, teacher_id:)

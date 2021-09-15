@@ -29,6 +29,7 @@ function Tabs({handleLogout, user}) {
                     <li className = 'links'><NavLink exact to="/home">Home</NavLink></li>
                     {user ? <li className = 'links'><NavLink to="/classes">Classes</NavLink></li> : <li className = 'links'><NavLink to="/students">Students</NavLink></li>}
                     <li className = 'links'><NavLink to="/complaints">Complaints</NavLink></li>
+                    <li className = 'links'><NavLink exact to="/profile">Profile</NavLink></li>
                     <li> 
                         <button onClick={handleClick}> LOGOUT HERE</button>
                     </li>

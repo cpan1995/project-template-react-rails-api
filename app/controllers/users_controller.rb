@@ -27,7 +27,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :not_found
             render json: {error: "Not authorized"}, status: :unauthorized 
         end
     end
-    
+
     def student_list
         teacher = User.find(params[:id])
         students = teacher.students
@@ -38,11 +38,17 @@ rescue_from ActiveRecord::RecordNotFound, with: :not_found
         allTeachers = User.all.where(is_teacher: true)
         render json: allTeachers
     end
+
+    def update 
+        user = User.find(params[:id])
+        user.update(user_params)
+        render json: user
+    end
         
     private
 
     def user_params
-        params.permit(:username, :password, :password_confirmation, :first_name, :last_name, :is_teacher, :teacher_id)
+        params.permit(:username, :password, :password_confirmation, :first_name, :last_name, :is_teacher, :teacher_id, :complaints)
     end
 
     def not_found
