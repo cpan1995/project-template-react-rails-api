@@ -67,7 +67,7 @@ function HomePage() {
                     <Students user = {user}/>
                 </Route>
                 <Route exact path ='/complaints'>
-                    <Complaints/>
+                    <Complaints user={user}/>
                 </Route>
                 <Route exact path ='/profile'>
                     <Profile user = {user} setUser = {setUser}/>

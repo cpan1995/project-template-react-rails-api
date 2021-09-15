@@ -20,3 +20,13 @@ code {
   float: left;
   padding-top: 1em
 }
+
+.ui.basic.segment.complaintsContainerSegment{
+  display: flex;
+  flex-direction: column;
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 30px;
+}

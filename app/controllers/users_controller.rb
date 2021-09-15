@@ -45,6 +45,22 @@ rescue_from ActiveRecord::RecordNotFound, with: :not_found
         render json: user
     end
 
+    def students_without_teachers
+        students= User.all.where(is_teacher: false).where(teacher_id: nil)
+        render json: students
+    end
+
+    def update_teacher_id
+        teacher = User.find(params[:id])
+        student = User.find_by(username: params[:username])
+        student.update(user_params)
+        student.school_classes.create(subject: 'math')
+        student.school_classes.create(subject: 'history')
+        student.school_classes.create(subject: 'science')
+        students = teacher.students
+        render json: students
+    end
+
     private
 
     def user_params
@@ -55,4 +71,4 @@ rescue_from ActiveRecord::RecordNotFound, with: :not_found
         render json: {error: "Not found"}, status: :not_found
     end
 
-end
+e
