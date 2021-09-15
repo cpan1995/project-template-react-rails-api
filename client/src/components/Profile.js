@@ -35,7 +35,7 @@ function Profile({ user, setUser }) {
                 </Header>
                 <Form onSubmit={handleSubmit} >
                 <Segment stacked>
-                        <Grid celled> 
+                      
                         
                             
                             <Modal
@@ -45,7 +45,7 @@ function Profile({ user, setUser }) {
                                 trigger={<Image size='small' alt={"avatar"} src={user.avatar ? user.avatar : 'https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png'} />}>
                                 <Modal.Header>Select a Photo</Modal.Header>
                                 <Modal.Content image>
-                                    <Image size='medium' src='https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png' wrapped />
+                                    <Image size='medium' src={user.avatar} wrapped />
                                     <Modal.Description>
                                         <Header>Profile Photo</Header>
                                         <p> TEXT HERE
@@ -58,11 +58,11 @@ function Profile({ user, setUser }) {
                                         Nope
                                     </Button>
                                     <Button
-                                        content="Looks Good"
-                                        labelPosition='right'
-                                        onClick={() => setOpen(false)}
-                                        positive
-                                    />
+                                        labelpostition='right'
+                                        color='teal'
+                                        onClick={() => setOpen(false)}>
+                                       Looks Good!
+                                    </Button>
                                 </Modal.Actions>
                             </Modal>
                             
@@ -89,7 +89,7 @@ function Profile({ user, setUser }) {
                         <Form.Field>
                             <label>Edit Password: </label>
                             <input name="password"
-                                type="text"
+                                type="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="New Password" />
@@ -97,14 +97,14 @@ function Profile({ user, setUser }) {
                         <Form.Field>
                             <label>Password Confirmation: </label>
                             <input name="username"
-                                type="text"
+                                type="password"
                                 value={passwordConfirmation}
                                 onChange={(e) => setPasswordConfirmation(e.target.value)}
                                 placeholder="Confirm Password" />
                         </Form.Field>
                         <Button>Submit</Button>
                         
-                        </Grid>
+                       
                     </Segment>
                     
                 </Form>

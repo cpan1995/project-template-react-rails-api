@@ -18,6 +18,7 @@ function HomePage() {
         fetch("/me").then((r) => {
             if (r.ok) {
                 r.json().then((user) => {
+                    console.log(user)
                     setUser(user)
                     setLogin(true)
                 })

@@ -15,11 +15,13 @@ function Classes({ teacherBool, user }){
 
     return(    
         <div className = 'allclasses'>
-             <ul className ='classlist'>
-                 {classes.map((classs) => (
-                     <Class classs={classs} key = {classs.id}/>
-                 ))}
-             </ul>
+            <div>
+                <ul className ='classlist'>
+                    {classes.map((classs) => (
+                        <Class classs={classs} key = {classs.id}/>
+                    ))}
+                </ul>
+            </div>
         </div>        
     )
 }

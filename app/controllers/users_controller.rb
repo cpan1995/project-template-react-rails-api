@@ -44,11 +44,11 @@ rescue_from ActiveRecord::RecordNotFound, with: :not_found
         user.update(user_params)
         render json: user
     end
-        
+
     private
 
     def user_params
-        params.permit(:username, :password, :password_confirmation, :first_name, :last_name, :is_teacher, :teacher_id, :complaints)
+        params.permit(:username, :password, :password_confirmation, :first_name, :last_name, :is_teacher, :teacher_id, :complaints, :avatar)
     end
 
     def not_found

@@ -1,14 +1,9 @@
 import React from 'react';
 import { NavLink, useHistory } from "react-router-dom"
 import { useState, useEffect } from "react";
+import { Menu, Segment, Header, Button } from 'semantic-ui-react'
 
 function Tabs({handleLogout, user}) {
-
-    // useEffect(() => {
-    //     fetch('http://localhost:3000/isTeacher?')
-    //     .then(res => res.json())
-    //     .then(user => setUser(user))
-    // }, [])
 
     let history = useHistory()
 
@@ -20,22 +15,61 @@ function Tabs({handleLogout, user}) {
             history.push('/')
         })
     }
+    
 
     return(
-        <div className = "header">
-            <h1 className = "title">Website Title</h1>
-            <nav className = "tabs">
-                <ul className = 'nav'>
-                    <li className = 'links'><NavLink exact to="/home">Home</NavLink></li>
-                    {user ? <li className = 'links'><NavLink to="/classes">Classes</NavLink></li> : <li className = 'links'><NavLink to="/students">Students</NavLink></li>}
-                    <li className = 'links'><NavLink to="/complaints">Complaints</NavLink></li>
-                    <li className = 'links'><NavLink exact to="/profile">Profile</NavLink></li>
-                    <li> 
-                        <button onClick={handleClick}> LOGOUT HERE</button>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+        <div className="header">
+        <Segment style = {{marginBottom: '0px'}}>
+       <div className="ui center aligned header"> 
+           <Header as = 'h2'>
+               APP NAME HERE
+           </Header>
+           </div>
+       </Segment>
+       <Menu style={{marginTop: '0px'}}>
+
+           <Menu.Item>
+               <NavLink exact to="/home"
+               style={{ color: "grey" }}
+               activeStyle={{fontWeight: "bold", color: "black"}}>
+                   Home</NavLink>
+           </Menu.Item>
+           <Menu.Item>
+               {user.is_teacher ? <NavLink to="/students"
+               style={{ color: "grey" }}
+               activeStyle={{fontWeight: "bold", color: "black"}}>
+                   Students</NavLink> 
+               : <NavLink to="/classes"
+               style={{ color: "grey" }}
+              activeStyle={{fontWeight: "bold", color: "black"}}>
+                   Classes</NavLink>}
+           </Menu.Item>
+           {user.is_teacher ? 
+           <Menu.Item>
+               <NavLink to="/complaints"
+               style={{ color: "grey" }}
+               activeStyle={{fontWeight: "bold", color: "black"}}>
+                   Complaints</NavLink>
+           </Menu.Item> : null}
+           {/* <Menu.Item>
+               {user.is_teacher ? <NavLink to="/complaints"
+               style={{ color: "grey" }}
+               activeStyle={{fontWeight: "bold", color: "black"}}>
+                   Complaints</NavLink> :
+                   <></>}
+            
+           </Menu.Item> */}
+           <Menu.Item>
+               <NavLink exact to="/profile"
+               style={{ color: "grey" }}
+               activeStyle={{fontWeight: "bold", color: "black"}}>
+                   Profile</NavLink>
+           </Menu.Item>
+           
+               <Button onClick={handleClick}> LOGOUT HERE</Button>
+       </Menu>
+      
+   </div>
     )
 }
 
