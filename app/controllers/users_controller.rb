@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 rescue_from ActiveRecord::RecordNotFound, with: :not_found
     # skip_before_action :teacherAuthorize, only: :create
-    skip_before_action :studentAuthorize, only: :create
+    #skip_before_action :studentAuthorize, only: :create
 
     # def create 
     #     user = User.create(user_params)
@@ -54,9 +54,9 @@ rescue_from ActiveRecord::RecordNotFound, with: :not_found
         teacher = User.find(params[:id])
         student = User.find_by(username: params[:username])
         student.update(user_params)
-        student.school_classes.create(subject: 'math')
-        student.school_classes.create(subject: 'history')
-        student.school_classes.create(subject: 'science')
+        student.school_classes.create(subject: 'math', grade:93, homeworks: ['test'] )
+        student.school_classes.create(subject: 'history', grade: 93, homeworks: ['test'])
+        student.school_classes.create(subject: 'science', grade: 93, homeworks: ['test'])
         students = teacher.students
         render json: students
     end
@@ -71,4 +71,4 @@ rescue_from ActiveRecord::RecordNotFound, with: :not_found
         render json: {error: "Not found"}, status: :not_found
     end
 
-e
+end

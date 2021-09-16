@@ -18,6 +18,9 @@ export default function ComplaintsGen({profilePic,complaint, name}){
                                 </p>
                             </Segment>
                         </Segment.Group>
+                        <Segment.Group>
+                            
+                        </Segment.Group>
                     </Grid.Column>
                 </Grid>
                 <Divider />

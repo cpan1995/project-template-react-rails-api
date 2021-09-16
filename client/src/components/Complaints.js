@@ -7,7 +7,6 @@ function Complaints() {
     const [studentsInfo, setStudentsInfo] = useState([])
 
     useEffect(() => {
-
             fetch('/me').then((r) => {
                 if(r.ok){
                     r.json().then((user) => {

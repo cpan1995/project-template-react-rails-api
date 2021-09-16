@@ -19,5 +19,7 @@ Rails.application.routes.draw do
   post "/complaints/create", to: "complaints#create"
   get "/:id/:subject", to: "school_classes#teacher_classes"
 
+  get "/:id/homeworks", to: "school_classes#homeworks"
+
   patch "/teacher/:id/:username", to: "users#update_teacher_id"
 end

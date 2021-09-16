@@ -11,7 +11,10 @@
 # User.create(username: 'test', password_digest: '123123', first_name: '', last_name: '', is_teacher: true, teacher_id:)
 # User.create(username: 'test', password_digest: '123123', first_name: '', last_name: '', is_teacher: true, teacher_id:)
 
-User.delete_all
-Complaint.delete_all
+# User.delete_all
+# Complaint.delete_all
 SchoolClass.delete_all
+SchoolClass.create(grade: 90, user_id: User.first.id, homeworks: ["qweqwe","qweqwe","qwe"], subject: "Math")
+SchoolClass.create(grade: 90, user_id: User.first.id, homeworks: ["qasdasd","asdasd","asdasd"], subject: "Stuff")
+SchoolClass.create(grade: 90, user_id: User.first.id, homeworks: ["zxczxc","zxczxc","zxczxc"], subject: "QWERT")
 

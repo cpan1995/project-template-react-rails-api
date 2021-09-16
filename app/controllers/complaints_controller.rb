@@ -12,7 +12,6 @@ class ComplaintsController < ApplicationController
         render json: new_complaint
     end
 
-
     private
     def complaint_params
         params.permit(:name, :experience, :complaint, :user_id)

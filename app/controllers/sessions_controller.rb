@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
     # skip_before_action :teacherAuthorize, only: :create
-    skip_before_action :studentAuthorize, only: :create
+    #skip_before_action :studentAuthorize, only: :create
 
     def create
         user = User.find_by(username: params[:username])

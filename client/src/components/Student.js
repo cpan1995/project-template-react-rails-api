@@ -17,10 +17,7 @@ function Student({ student, user, setStudents }) {
     }
     
     return (
-        // <div>
-        //     <p>{student.first_name} {student.last_name}</p>
-        //     <button>Edit Grade</button>
-        // </div>
+     
         <Card>
 
             <Image size='medium' src={`${student.avatar}`} />
