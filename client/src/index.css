@@ -34,8 +34,14 @@ code {
 .teacherClassesStudentsTab{
   display: flex;
   flex-direction: row;
+  margin-top: 10px;
 }
 
 .teacherClassesStudentsTabB{
   margin-right: 2em;
+}
+
+.teacherClassesStudentsTabParent{
+  display: flex;
+  flex-direction: row;
 }

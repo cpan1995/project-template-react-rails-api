@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import Student from './Student'
-import { Segment, Divider, Grid, Image, Header, Container } from 'semantic-ui-react'
+import { Segment, Divider, Grid, Image, Header, Container, Button, Input } from 'semantic-ui-react'
+import GradeState from "./GradeState";
 
 function TeacherClass({user, tagName}){
     const [students, setStudents] = useState([])
     const [studentsNoTeacher, setSNT] = useState([])
     const [currentUser, setCurrentUser] = useState({})
+    
 
     useEffect(() => {
         fetch('/me').then((r) => {
@@ -40,39 +42,13 @@ function TeacherClass({user, tagName}){
 
 
     if(students.length!=0){
-        studentsContainers = students.map((student) => {
-
-            let grade = student.school_classes.map(element => {
-                // console.log(tagName.toLowerCase())
-                // console.log(element.subject.toLowerCase())
-                if(element.subject.toLowerCase() === tagName.toLowerCase()){
-                    return element.grade
-                }
-            })
-
-            return (
-            //     <tr>
-            //         <td>{student.first_name}</td>
-            //         <td>{student.last_name}</td>
-            //         <td>{user.tagName}</td> 
-                    
-            // {/* <td>{student.school_classes[0].grade}</td>
-            // <td>{student.school_classes[0].homeworks[0]}</td> */}
-            //     </tr>
-                <div className = 'teacherClassesStudentsTab'>
-                    <b className = 'teacherClassesStudentsTabB'>Name:</b> 
-                    <p>{`${student.first_name} ${student.last_name}`}</p>
-                    <b className = 'teacherClassesStudentsTabB'>Grade:</b>
-                    <p>{grade}</p>
-                    
-                </div>
-                // <Header as = "h2">{student.first_name+ " " + student.last_name}</Header>
-            )
+        studentsContainers = students.map((student,index) => {
+            return <GradeState  key = {student.id + index} student = {student} tagName = {tagName} user={user}/>
+            
+            
         })
     }
-
     
-
     return(
 
 

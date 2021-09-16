@@ -26,7 +26,7 @@ function Students() {
         let tagName=element
         newTabRender.push({menuItem: element, render: () => {
             return(
-                <Tab.Pane>  <TeacherClass key = {element+index} user = {currentUser} tagName = {tagName}/> </Tab.Pane>
+                <Tab.Pane>  <TeacherClass key = {tagName+index} user = {currentUser} tagName = {tagName}/> </Tab.Pane>
             )
         }})
     })

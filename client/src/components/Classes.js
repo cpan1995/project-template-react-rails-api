@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Class from './Class'
-import { Image, List, Table, Button, Tab } from 'semantic-ui-react'
+import { Image, List, Table, Button, Tab, Form } from 'semantic-ui-react'
 
 function Classes({ teacherBool, user }){
 
     const [classes, setClasses] = useState([])
-    const [homeworks, setHomeworks] = useState([])
     useEffect(() => {
         fetch('/me').then((r) => {
                 if(r.ok){
@@ -30,14 +29,55 @@ function Classes({ teacherBool, user }){
         newTabRender.push({menuItem: claz.subject, render: () => <Tab.Pane> <Class key={claz.subject + index} claz = {claz}/> </Tab.Pane>})
     })
    
+    const [name, setName] = useState("")
+    const [complaint, setComplaint] = useState("")
+
+    function handleSubmit(e) {
+        e.preventDefault()
+
+        fetch("/complaints/create", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user_id: user.teacher_id,
+            name: name,
+            complaint: complaint,
+          }),
+        })
+        .then((resp) => resp.json())
+          .then((x) => {console.log(x)
+          });
+    }
     return(    
         <div className = 'studentclasses'>
             <div>
                 <Tab panes={newTabRender} />
             </div>
-
-            <div>
-            </div>
+            <h1>Complaints/Comments:</h1>
+            <Form onSubmit={handleSubmit}>
+                <Form.Field>
+                <label>Name:</label>
+                <input 
+                    placeholder='' 
+                    type="text" 
+                    name="name" 
+                    value = {name} 
+                    onChange={(e) => setName(e.target.value)}/>
+                </Form.Field>
+                <Form.Field>
+                <label>Comment:</label>
+                <input 
+                    placeholder='' 
+                    type="text" 
+                    name="complaint" 
+                    value = {complaint} 
+                    onChange={(e) => setComplaint(e.target.value)}/>
+                </Form.Field>
+                
+                <Button type='submit'>Submit</Button>
+            </Form>
         </div>        
     )
 }
