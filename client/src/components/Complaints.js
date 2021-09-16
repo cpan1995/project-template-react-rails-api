@@ -21,14 +21,9 @@ function Complaints() {
     let complaintsContainers = []
 
     if (userInfo["is_teacher"]){
-        // complaintsContainers = userInfo['complaints'].map((element, index)=>{
-        //    return (<ComplaintsGen key={index+element} index = {index} complaint= {element}/>)
-        // })
-        // studentsInfo.forEach((element) => {
-        //     element['complaints'].map((element2, index) => {
-        //         complaintsContainers.push(<ComplaintsGen key={index+element} name={element.first_name} profilePic = {element.avatar} complaint= {element2}/>)
-        //     })
-        // })
+        complaintsContainers = userInfo['complaints'].map((element, index)=>{
+           return (<ComplaintsGen key={index+element} index = {index} complaint= {element.complaint} name={element.name} profilePic={"https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"}/>)
+        })
     }
     else{
         return (
@@ -40,7 +35,7 @@ function Complaints() {
     
     return(
         <Segment basic className = "complaintsContainerSegment">
-            {/* {complaintsContainers} */}
+            {complaintsContainers}
         </Segment>
     )
 }

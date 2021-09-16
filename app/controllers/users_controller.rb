@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 rescue_from ActiveRecord::RecordNotFound, with: :not_found
     # skip_before_action :teacherAuthorize, only: :create
-    skip_before_action :studentAuthorize, only: [:create, :show]
+    skip_before_action :studentAuthorize, only: [:create]
 
     # def create 
     #     user = User.create(user_params)

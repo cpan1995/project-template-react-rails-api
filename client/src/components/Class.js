@@ -9,9 +9,6 @@ function Class({claz}) {
     function handleClick(index){
         
         homeworks.splice(index,1)
-        //Pop the homework from index
-        //Then store the new homework array back into the user
-        //you can probably do that with a call back
         fetch(`/school_classes/${claz.id}`, {
          method: "PATCH",
          headers: {

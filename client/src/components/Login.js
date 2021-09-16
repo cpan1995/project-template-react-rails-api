@@ -23,11 +23,16 @@ function Login({ handleSetUser }){
               password: e.target[1].value
            }),
         })
-          .then((r) => r.json())
-           .then((user) => 
-           {
-            handleSetUser(user)
-            });
+        .then((r) => {
+            if(r.ok){
+                r.json().then((user) => {
+                    handleSetUser(user)
+                })
+            }
+            else{
+                alert("Wrong Password")
+            }
+        })
     }
       function handleSignUp(){
         history.push('/signup')

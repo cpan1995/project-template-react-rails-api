@@ -47,7 +47,9 @@ function Classes({ teacherBool, user }){
           }),
         })
         .then((resp) => resp.json())
-          .then((x) => {console.log(x)
+          .then((x) => {
+            alert("Complaint Logged")
+            console.log(x)
           });
     }
     return(    
