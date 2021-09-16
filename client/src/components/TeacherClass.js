@@ -118,12 +118,12 @@ function TeacherClass({ user, tagName, subjects }) {
                 ))} */}
             </Grid>
             <Segment className="studentContainer">
-            
-            <h1 style={{textAlign: "center"}}>Add Students to my class</h1>
-                { studentsNoTeacher.length > 0 ? studentsNoTeacher.map((student,index) => (
-                    <Student key = {student+index} student={student} user={user} setStudents={setStudents} subjects={subjects}/>
-                )): <> </>}
-                </Segment>
+
+                <h1 style={{ textAlign: "center" }}>Add Students to my class</h1>
+                {studentsNoTeacher.map((student, index) => (
+            <Student key={student + index} student={student} user={currentUser} setStudents={setStudents} subjects={subjects} />
+            ))}
+        </Segment>
         </div>
 
     )

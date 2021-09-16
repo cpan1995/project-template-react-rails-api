@@ -209,3 +209,9 @@ code {
   padding-left: 35px;
   padding-right: 35px;
 }
+
+.headerNameStuff{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

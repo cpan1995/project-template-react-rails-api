@@ -2,16 +2,6 @@ class UsersController < ApplicationController
 rescue_from ActiveRecord::RecordNotFound, with: :not_found
     # skip_before_action :teacherAuthorize, only: :create
     skip_before_action :studentAuthorize, only: [:create]
-
-    # def create 
-    #     user = User.create(user_params)
-    #     if user.valid? 
-    #         session[:user_id]= user.id
-    #         render json: user, status: :created 
-    #     else 
-    #         render json: {errors: user.errors.full_messages}, status: :unprocessable_entity
-    #     end 
-    # end
     
     def create
         user = User.create!(user_params)
@@ -72,8 +62,9 @@ rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
     def update_teacher_id
         teacher = User.find(params[:id])
+        # User.find_by(username: params[:username]).update!(teacher_id: params[:id])
         student = User.find_by(username: params[:username])
-        student.update(user_params)
+        student.update(teacher_id: params[:id])
         students = teacher.students
         render json: students
     end

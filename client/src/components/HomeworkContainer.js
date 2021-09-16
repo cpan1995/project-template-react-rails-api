@@ -33,7 +33,7 @@ export default function HomeworksContainers({homeworks, tagName}){
             fetch(`/school_classes/${newTask}/${tagName}`,{
                 method: "POST",
                 body: JSON.stringify({
-                    homework: newTask
+                    homework2: newTask
                 })
             })
             .then(()=>{

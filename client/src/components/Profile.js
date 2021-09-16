@@ -34,38 +34,38 @@ function Profile({ user, setUser }) {
                     Edit Your Profile
                 </Header>
                 <Form onSubmit={handleSubmit} >
-                <Segment stacked>
-                      
-                        
-                            
-                            <Modal
-                                onClose={() => setOpen(false)}
-                                onOpen={() => setOpen(true)}
-                                open={open}
-                                trigger={<Image size='small' alt={"avatar"} src={user.avatar ? user.avatar : 'https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png'} />}>
-                                <Modal.Header>Your Profile</Modal.Header>
-                                <Modal.Content image>
-                                    <Image size='small' src={user.avatar} wrapped />
-                                    <Modal.Description>
-                                        <Header>{`Hi, ${user.first_name} ${user.last_name}`}</Header>
-                                        
-                                        <p>{user.is_teacher === true ? 'Teacher': "Student"}</p>
-                                        <p> {`Username: ${user.username}`}</p>
-                                    
-                                    </Modal.Description>
-                                </Modal.Content>
-                                <Modal.Actions>
-                                   
-                                    <Button
-                                        labelpostition='right'
-                                        color='teal'
-                                        onClick={() => setOpen(false)}>
-                                       Close
-                                    </Button>
-                                </Modal.Actions>
-                            </Modal>
-                            
-                            <Form.Field >
+                    <Segment stacked>
+
+
+
+                        <Modal
+                            onClose={() => setOpen(false)}
+                            onOpen={() => setOpen(true)}
+                            open={open}
+                            trigger={<Image size='small' alt={"avatar"} src={user.avatar ? user.avatar : 'https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png'} />}>
+                            <Modal.Header>Your Profile</Modal.Header>
+                            <Modal.Content image>
+                                <Image size='small' src={user.avatar} wrapped />
+                                <Modal.Description>
+                                    <Header>{`Hi, ${user.first_name} ${user.last_name}`}</Header>
+
+                                    <p>{user.is_teacher === true ? 'Teacher' : "Student"}</p>
+                                    <p> {`Username: ${user.username}`}</p>
+
+                                </Modal.Description>
+                            </Modal.Content>
+                            <Modal.Actions>
+
+                                <Button
+                                    labelpostition='right'
+                                    color='teal'
+                                    onClick={() => setOpen(false)}>
+                                    Close
+                                </Button>
+                            </Modal.Actions>
+                        </Modal>
+
+                        <Form.Field >
                             <label>
                                 Edit Avatar:
                                 <input
@@ -102,10 +102,10 @@ function Profile({ user, setUser }) {
                                 placeholder="Confirm Password" />
                         </Form.Field>
                         <Button>Submit</Button>
-                        
-                       
+
+
                     </Segment>
-                    
+
                 </Form>
             </Grid.Column>
         </Grid>

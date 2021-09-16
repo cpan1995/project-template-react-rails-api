@@ -20,11 +20,10 @@ function Tabs({handleLogout, user}) {
     return(
         <div className="header">
         <Segment style = {{marginBottom: '0px'}}>
-       <div className="ui center aligned header"> 
-           <Header as = 'h2'>
-               APP NAME HERE
-           </Header>
-           </div>
+       <div className="headerNameStuff"> 
+            <Header as='h2'>PotatoesPortal</Header>
+            <p style={{'font-size': '20px'}}>{`Hi, ${user.first_name}`}</p>
+        </div>
        </Segment>
        <Menu style={{marginTop: '0px'}}>
 

@@ -43,8 +43,7 @@ function HomePage() {
             {isLoggedIn ? <Tabs handleLogout = {handleLogout} user = {user} /> : <></>}
             <Switch >
                 <Route exact path = '/'>
-                    {   
-                        isLoggedIn ? 
+                    {   isLoggedIn ? 
                         <>
                         </>
                         :
@@ -58,19 +57,39 @@ function HomePage() {
                     <Login/>
                 </Route>
                 <Route exact path = '/home'>
-                    <Main />
+                    {
+  
+                        <Main />
+                    }
+                    
                 </Route>
                 <Route exact path = '/classes'>
-                    <Classes user = {user}/>
+                    {
+ 
+                        <Classes user = {user}/>
+                    }
+                    
                 </Route>
                 <Route exact path = '/students'>
-                    <Students user = {user}/>
+                    {
+ 
+                        <Students user = {user}/>
+                    }
+                    
                 </Route>
                 <Route exact path ='/complaints'>
-                    <Complaints user={user}/>
+                    {
+                
+                        <Complaints user={user}/>
+                    }
+                    
                 </Route>
                 <Route exact path ='/profile'>
-                    <Profile user = {user} setUser = {setUser}/>
+                    {
+              
+                        <Profile user = {user} setUser = {setUser}/>
+                    }
+                    
                 </Route>
             </Switch> 
         </div>

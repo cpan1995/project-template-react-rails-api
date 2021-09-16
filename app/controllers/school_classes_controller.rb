@@ -37,9 +37,14 @@ rescue_from ActiveRecord::RecordInvalid, with: :show_errors
 
     def add_homework
         school_classes = SchoolClass.all.where(subject: params[:subject])
-        school_classes.each{|each_class| 
-            each_class.homeworks.push(params[:homework])
-            each_class.save
+        school_classes.each{|each_class|
+            if each_class.homeworks.present?
+                each_class.homeworks.push(params[:homework])
+                each_class.save
+            else
+                each_class.update(homeworks: [params[:homework]])
+            end
+            
         }
         render json: school_classes
     end
