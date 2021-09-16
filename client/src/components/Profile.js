@@ -43,25 +43,24 @@ function Profile({ user, setUser }) {
                                 onOpen={() => setOpen(true)}
                                 open={open}
                                 trigger={<Image size='small' alt={"avatar"} src={user.avatar ? user.avatar : 'https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png'} />}>
-                                <Modal.Header>Select a Photo</Modal.Header>
+                                <Modal.Header>Your Profile</Modal.Header>
                                 <Modal.Content image>
-                                    <Image size='medium' src={user.avatar} wrapped />
+                                    <Image size='small' src={user.avatar} wrapped />
                                     <Modal.Description>
-                                        <Header>Profile Photo</Header>
-                                        <p> TEXT HERE
-                                        </p>
-                                        <p>Is this the photo you'd like to use?</p>
+                                        <Header>{`Hi, ${user.first_name} ${user.last_name}`}</Header>
+                                        
+                                        <p>{user.is_teacher === true ? 'Teacher': "Student"}</p>
+                                        <p> {`Username: ${user.username}`}</p>
+                                    
                                     </Modal.Description>
                                 </Modal.Content>
                                 <Modal.Actions>
-                                    <Button color='black' onClick={() => setOpen(false)}>
-                                        Nope
-                                    </Button>
+                                   
                                     <Button
                                         labelpostition='right'
                                         color='teal'
                                         onClick={() => setOpen(false)}>
-                                       Looks Good!
+                                       Close
                                     </Button>
                                 </Modal.Actions>
                             </Modal>

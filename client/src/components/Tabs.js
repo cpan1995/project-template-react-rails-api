@@ -66,7 +66,7 @@ function Tabs({handleLogout, user}) {
                    Profile</NavLink>
            </Menu.Item>
            
-               <Button onClick={handleClick}> LOGOUT HERE</Button>
+            <Button onClick={handleClick} style={{marginLeft: '1470px'}}> LOGOUT</Button>
        </Menu>
       
    </div>

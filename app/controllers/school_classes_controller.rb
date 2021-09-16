@@ -27,7 +27,21 @@ rescue_from ActiveRecord::RecordInvalid, with: :show_errors
         
         # student_classes = classes.user
         render json: students
+    end
 
+    def update_grade
+        school_classes = SchoolClass.find(params[:id])
+        school_classes.update(grade: params[:grade])
+        render json: school_classes
+    end
+
+    def add_homework
+        school_classes = SchoolClass.all.where(subject: params[:subject])
+        school_classes.each{|each_class| 
+            each_class.homeworks.push(params[:homework])
+            each_class.save
+        }
+        render json: school_classes
     end
 
     private 

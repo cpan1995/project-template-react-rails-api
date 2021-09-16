@@ -52,13 +52,14 @@ function Classes({ teacherBool, user }){
     }
     return(    
         <div className = 'studentclasses'>
-            <div>
+            <div className = "thetabs">
                 <Tab panes={newTabRender} />
             </div>
-            <h1>Complaints/Comments:</h1>
-            <Form onSubmit={handleSubmit}>
+            <div className = "complaintsbox">
+            <h1 className="complaintz">Complaints/Comments:</h1>
+            <Form onSubmit={handleSubmit} className = "theform">
                 <Form.Field>
-                <label>Name:</label>
+                <label className = "textlabel">Name:</label>
                 <input 
                     placeholder='' 
                     type="text" 
@@ -67,7 +68,7 @@ function Classes({ teacherBool, user }){
                     onChange={(e) => setName(e.target.value)}/>
                 </Form.Field>
                 <Form.Field>
-                <label>Comment:</label>
+                <label className = "textlabel">Comment:</label>
                 <input 
                     placeholder='' 
                     type="text" 
@@ -78,6 +79,7 @@ function Classes({ teacherBool, user }){
                 
                 <Button type='submit'>Submit</Button>
             </Form>
+            </div>
         </div>        
     )
 }

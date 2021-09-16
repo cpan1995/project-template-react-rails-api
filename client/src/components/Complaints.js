@@ -5,19 +5,14 @@ import { Segment, Divider, Image } from 'semantic-ui-react'
 function Complaints() {
     const [userInfo, setUserInfo] = useState({})
     const [studentsInfo, setStudentsInfo] = useState([])
+    const [currentComplaints, setComplaints] = useState({})
 
     useEffect(() => {
             fetch('/me').then((r) => {
                 if(r.ok){
-                    r.json().then((user) => {
-                        fetch(`/${user.id}/students`).then((r) => {
-                            if(r.ok){
-                                r.json().then((students) => {
-                                    setStudentsInfo(students)
-                                })
-                            }
-                            setUserInfo(user)
-                        })
+                    r.json().then((stuff) => {
+                        console.log(stuff)
+                        setUserInfo(stuff)
                     })
                 }
             })
@@ -29,11 +24,11 @@ function Complaints() {
         // complaintsContainers = userInfo['complaints'].map((element, index)=>{
         //    return (<ComplaintsGen key={index+element} index = {index} complaint= {element}/>)
         // })
-        studentsInfo.forEach((element) => {
-            element['complaints'].map((element2, index) => {
-                complaintsContainers.push(<ComplaintsGen key={index+element} name={element.first_name} profilePic = {element.avatar} complaint= {element2}/>)
-            })
-        })
+        // studentsInfo.forEach((element) => {
+        //     element['complaints'].map((element2, index) => {
+        //         complaintsContainers.push(<ComplaintsGen key={index+element} name={element.first_name} profilePic = {element.avatar} complaint= {element2}/>)
+        //     })
+        // })
     }
     else{
         return (
@@ -45,7 +40,7 @@ function Complaints() {
     
     return(
         <Segment basic className = "complaintsContainerSegment">
-            {complaintsContainers}
+            {/* {complaintsContainers} */}
         </Segment>
     )
 }

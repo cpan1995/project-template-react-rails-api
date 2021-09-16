@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Segment, Divider, Grid, Image, Header, Container, Button, Input } from 'semantic-ui-react'
 
-export default function GradeState({student, tagName, user}){
+export default function GradeState({ student, tagName, user }) {
     const [currentStudent, setCurrentStudent] = useState(student)
     const [currentGrade, setCurrentGrade] = useState(0)
     const [currentSubjectId, setCurrentSubjectId] = useState(0)
@@ -9,9 +9,7 @@ export default function GradeState({student, tagName, user}){
     useEffect(() => {
         let classesId = 0;
         let grade = student.school_classes.map(element => {
-            // console.log(tagName.toLowerCase())
-            // console.log(element.subject.toLowerCase())
-            if(element.subject.toLowerCase() === tagName.toLowerCase()){
+            if (element.subject.toLowerCase() === tagName.toLowerCase()) {
                 classesId = element.id
                 return element.grade
             }
@@ -20,25 +18,49 @@ export default function GradeState({student, tagName, user}){
         setCurrentSubjectId(classesId)
     }, [])
 
-    console.log(student)
-
-    function handleChange(e){
+    function handleChange(e) {
         const re = /^[0-9\b]+$/;
-        if(e.target.value === '' || re.test(e.target.value)){
+        if (e.target.value === '' || re.test(e.target.value)) {
             setCurrentGrade(e.target.value)
         }
     }
 
+    function handleNewEdit() {
+        fetch(`/school_classes/newGrade/${currentSubjectId}/${currentGrade}`, {
+            method: "PATCH",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                grade: currentGrade,
+                id: currentSubjectId
+            })
+        })
+            .then((r) => {
+                if (r.ok) {
+                    r.json().then(() => {
+                        alert("Successfully Updated")
+                    })
+                }
+            })
+    }
+
     return (
-        <div className = 'teacherClassesStudentsTabParent'>
-            <div className = 'teacherClassesStudentsTab'>
-                <b className = 'teacherClassesStudentsTabB'>Name:</b> 
-                <p>{`${student.first_name} ${student.last_name}`}</p>
-                <b className = 'teacherClassesStudentsTabB'>Grade:</b>
-            </div>
-            <Input placeholder = {`Current Grade is ${currentGrade}`} onChange = {handleChange} value={currentGrade}/>
-            <Button>Edit</Button>
-        </div>
+        // <div className = 'teacherClassesStudentsTabParent'>
+        //     <div className = 'teacherClassesStudentsTab'>
+        //         <b className = 'teacherClassesStudentsTabB'>Name:</b> 
+        //         <p>{`${student.first_name} ${student.last_name}`}</p>
+        //         <b className = 'teacherClassesStudentsTabB'>Grade:</b>
+        //     </div>
+        <>
+            <td data-label="Name">{`${student.first_name} ${student.last_name}`}</td>
+            <td data-label="Grade">
+                <Input placeholder={`Current Grade is ${currentGrade}`} onChange={handleChange} value={currentGrade} />
+                <Button onClick={handleNewEdit}>Edit</Button>
+            </td>
+        </>
+        // </div>
     )
 
 }

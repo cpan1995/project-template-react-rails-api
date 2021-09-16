@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
   include ActionController::Cookies
 
-  #before_action :studentAuthorize
+  before_action :studentAuthorize
 
   # def teacherAuthorize
   #   @current_user = User.find_by(id: session[:user_id])
@@ -12,9 +12,7 @@ class ApplicationController < ActionController::API
 
   def studentAuthorize
     @current_user = User.find_by(id: session[:user_id])
-    
     render json: { errors: ["Not Authroized"] }, status: :unauthorized unless @current_user
-
   end
 
   def render_unprocessable_entity_response(exception)

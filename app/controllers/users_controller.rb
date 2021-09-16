@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 rescue_from ActiveRecord::RecordNotFound, with: :not_found
     # skip_before_action :teacherAuthorize, only: :create
-    #skip_before_action :studentAuthorize, only: :create
+    skip_before_action :studentAuthorize, only: [:create, :show]
 
     # def create 
     #     user = User.create(user_params)
@@ -34,6 +34,26 @@ rescue_from ActiveRecord::RecordNotFound, with: :not_found
         render json: students
     end
 
+    def student_list_by_subject
+        teacher = User.find(params[:id])
+        students = teacher.students
+        found_class = {};
+        students.each {|student|
+            student.school_classes.each{|current_class| 
+                # if current_class.subject.downcase == params[:subject].downcase {
+                #     found_class = current_class
+                # }
+                
+                if current_class.subject.downcase == params[:subject].downcase
+                    found_class = current_class
+                    found_class.homeworks.delete(params[:deleted])
+                    found_class.save
+                end
+            }
+        }
+        render json: students
+    end
+
     def find_all_teachers
         allTeachers = User.all.where(is_teacher: true)
         render json: allTeachers
@@ -54,9 +74,6 @@ rescue_from ActiveRecord::RecordNotFound, with: :not_found
         teacher = User.find(params[:id])
         student = User.find_by(username: params[:username])
         student.update(user_params)
-        student.school_classes.create(subject: 'math', grade:93, homeworks: ['test'] )
-        student.school_classes.create(subject: 'history', grade: 93, homeworks: ['test'])
-        student.school_classes.create(subject: 'science', grade: 93, homeworks: ['test'])
         students = teacher.students
         render json: students
     end
