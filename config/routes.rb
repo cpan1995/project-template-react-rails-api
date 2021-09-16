@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  #resources :complaints
+  # resources :complaints
   # resources :school_classes
   # resources :users
   # Routing logic: fallback requests for React Router.
@@ -10,16 +10,19 @@ Rails.application.routes.draw do
   post "/signup", to: "users#create"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
+
   get "/me", to: "users#show"
   patch "/users/:id", to: "users#update"
-
   get "/:id/students", to: "users#student_list"
-  get '/students_without_teachers', to: "users#students_without_teachers"
-  get "/:id/classes", to: "school_classes#class_list"
-  post "/complaints/create", to: "complaints#create"
-  get "/:id/:subject", to: "school_classes#teacher_classes"
-
-  get "/:id/homeworks", to: "school_classes#homeworks"
-
   patch "/teacher/:id/:username", to: "users#update_teacher_id"
+
+
+  get '/students_without_teachers', to: "users#students_without_teachers"
+  post "/complaints/create", to: "complaints#create"
+
+  get "/:id/classes", to: "school_classes#class_list"
+  get "/:id/:subject", to: "school_classes#teacher_classes"
+  post "/classes/create", to: "school_classes#create"
+  get "/:id/homeworks", to: "school_classes#homeworks"
+  patch "/school_classes/:id", to: "school_classes#update_hw"
 end

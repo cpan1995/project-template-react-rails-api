@@ -1,5 +1,6 @@
 class SchoolClassesController < ApplicationController   
 rescue_from ActiveRecord::RecordNotFound, with: :not_found
+rescue_from ActiveRecord::RecordInvalid, with: :show_errors
 
 
     def create
@@ -11,6 +12,12 @@ rescue_from ActiveRecord::RecordNotFound, with: :not_found
         user = User.find(params[:id])
         classes = user.school_classes
         render json: classes      
+    end
+
+    def update_hw
+        school_classes = SchoolClass.find(params[:id])
+        school_classes.update(homeworks: params[:homeworks])
+        render json: school_classes.homeworks
     end
 
     def teacher_classes
@@ -31,5 +38,9 @@ rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
     def not_found
         render json: {error: "Not found"}, status: :not_found 
+    end
+
+    def show_errors
+        render json: {error: "Can't Make This Homie"}, status: :not_found
     end
 end

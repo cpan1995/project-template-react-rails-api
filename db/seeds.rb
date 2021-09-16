@@ -14,7 +14,12 @@
 # User.delete_all
 # Complaint.delete_all
 SchoolClass.delete_all
+
 SchoolClass.create(grade: 90, user_id: User.first.id, homeworks: ["qweqwe","qweqwe","qwe"], subject: "Math")
-SchoolClass.create(grade: 90, user_id: User.first.id, homeworks: ["qasdasd","asdasd","asdasd"], subject: "Stuff")
-SchoolClass.create(grade: 90, user_id: User.first.id, homeworks: ["zxczxc","zxczxc","zxczxc"], subject: "QWERT")
+SchoolClass.create(grade: 90, user_id: User.first.id, homeworks: ["qasdasd","asdasd","asdasd"], subject: "Science")
+SchoolClass.create(grade: 90, user_id: User.first.id, homeworks: ["zxczxc","zxczxc","zxczxc"], subject: "History")
+
+SchoolClass.create(grade: 90, user_id: User.second.id, homeworks: ["qweqwe","qweqwe","qwe"], subject: "Math")
+SchoolClass.create(grade: 90, user_id: User.second.id, homeworks: ["qasdasd","asdasd","asdasd"], subject: "Science")
+SchoolClass.create(grade: 90, user_id: User.second.id, homeworks: ["zxczxc","zxczxc","zxczxc"], subject: "History")
 

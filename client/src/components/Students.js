@@ -3,22 +3,30 @@ import { useState, useEffect } from "react";
 import {  Tab } from 'semantic-ui-react'
 import TeacherClass from './TeacherClass'
 
-function Students({ user }) {
+function Students() {
     const [students, setStudents] = useState([])
     const [studentsNoTeacher, setSNT] = useState([])
     const [subjects, setSubjects] = useState(['Math', 'Science', 'History'])
+    const [currentUser, setCurrentUser] = useState({})
     // const [tabName, setTabName]=useState('')
 
     let newTabRender = [];
-
     
-   
+    useEffect(() => {
+        fetch('/me').then((r) => {
+            if(r.ok){
+                r.json().then((user) => {
+                    setCurrentUser(user)
+                })
+            }
+        })
+    }, [])
        
-    subjects.forEach((element) => {
-         let tagName=element
+    subjects.forEach((element, index) => {
+        let tagName=element
         newTabRender.push({menuItem: element, render: () => {
             return(
-                <Tab.Pane>  <TeacherClass user={user} tagName={tagName} /> </Tab.Pane>
+                <Tab.Pane>  <TeacherClass key = {element+index} user = {currentUser} tagName = {tagName}/> </Tab.Pane>
             )
         }})
     })
