@@ -50,6 +50,8 @@ function Classes({ teacherBool, user }){
           .then((x) => {
             alert("Complaint Logged")
             console.log(x)
+            setComplaint('')
+            setName('')
           });
     }
     return(    

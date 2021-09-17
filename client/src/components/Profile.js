@@ -26,6 +26,10 @@ function Profile({ user, setUser }) {
         })
             .then((r) => r.json())
             .then((user) => setUser(user))
+            setAvatar('')
+            setUsername('')
+            setPasswordConfirmation('')
+            setPassword('')
     }
     return (
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>

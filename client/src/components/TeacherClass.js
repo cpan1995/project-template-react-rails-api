@@ -120,9 +120,13 @@ function TeacherClass({ user, tagName, subjects }) {
             <Segment className="studentContainer">
 
                 <h1 style={{ textAlign: "center" }}>Add Students to my class</h1>
-                {studentsNoTeacher.map((student, index) => (
-            <Student key={student + index} student={student} user={currentUser} setStudents={setStudents} subjects={subjects} />
-            ))}
+
+                <div className="nestedStudentContainer">
+                        {studentsNoTeacher.map((student, index) => (
+                    <Student key={student + index} student={student} user={currentUser} setStudents={setStudents} subjects={subjects} />
+                    ))}
+                </div>
+
         </Segment>
         </div>
 

@@ -53,6 +53,9 @@ function Login({ handleSetUser }){
         <div>
             <Grid textAlign='center' style={{ height: '100vh'}} verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450 }}>
+                <Header as='h2' color='teal' textAlign='center' block >
+                        PotatoesPortal
+                    </Header>
                     <Header as='h2' color='teal' textAlign='center' block >
                         Log-in to your account
                     </Header>

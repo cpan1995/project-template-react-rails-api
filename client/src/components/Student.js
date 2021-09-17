@@ -30,8 +30,7 @@ function Student({ student, user, setStudents, subjects }) {
                 body: JSON.stringify({
                     user_id: id, 
                     subject: subject, 
-                    grade: 100, 
-                    homeworks: ["Say Hello To Teacher"]
+                    grade: 100
                 }),
             
         }).then((r)=>r.json()).then((homework)=> {

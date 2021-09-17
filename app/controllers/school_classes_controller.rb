@@ -5,6 +5,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :show_errors
 
     def create
         new_class_info = SchoolClass.create!(school_classes_params)
+        new_class_info.update(homeworks: [])
         render json: new_class_info
     end
 

@@ -39,7 +39,11 @@ export default function HomeworksContainers({homeworks, tagName}){
             .then(()=>{
                 let tempArray = [...currentHomeworks]
                 tempArray.push(newTask)
+                if(tempArray[0]==null){
+                    tempArray = [];
+                }
                 setCurrentHomeworks(tempArray)
+                setNewTask('')
             })
         }
     }
@@ -56,8 +60,9 @@ export default function HomeworksContainers({homeworks, tagName}){
                 <Homework homework = {homework} tagName= {tagName} handleHomeworksCallback={handleHomeworksCallback}/>
             )
         })
-        console.log(homeworkRender)
     }
+
+    console.log(currentHomeworks)
 
     return(
         <div>

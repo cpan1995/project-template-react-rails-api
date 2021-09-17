@@ -112,6 +112,12 @@ code {
   margin-left: 10px;
 }
 
+.nestedStudentContainer{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 
 
 
@@ -217,6 +223,7 @@ code {
 
 .ui.segment.studentGrades{
   height: 455px;
+  overflow: scroll;
 }
 
 .tablesContainer{

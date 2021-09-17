@@ -43,7 +43,7 @@ function SignUp({handleSetUser}) {
         <Grid textAlign='center' style={{ height: '100vh'}} verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450 }}>
                     <Header as='h2' color='teal' textAlign='center' block >
-                        Sign Up
+                        PotatoesPortal Sign Up
                     </Header>
                     <Form size='large' onSubmit={handleSubmit}>
                         <Segment stacked>
@@ -97,7 +97,7 @@ function SignUp({handleSetUser}) {
                         </Segment>
                     </Form>
                     <Message>
-                       Already Have An Account? <a href='/login'>Login</a>
+                       Already Have An Account? <a href='/'>Login</a>
                     </Message>
                 </Grid.Column>
         </Grid>
