@@ -33,7 +33,7 @@ function Profile({ user, setUser }) {
                 <Header as='h2' color='teal' textAlign='center' block >
                     Edit Your Profile
                 </Header>
-                <Form onSubmit={handleSubmit} >
+                <Form onSubmit={handleSubmit} className = "changeprofile">
                     <Segment stacked>
 
 

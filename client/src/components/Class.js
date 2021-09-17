@@ -29,14 +29,14 @@ function Class({claz}) {
             <Table celled fixed singleLine>
                     <Table.Header>
                     <Table.Row>
-                        <Table.HeaderCell>Homeworks</Table.HeaderCell>
-                        <Table.HeaderCell>Completed?</Table.HeaderCell>
+                        <Table.HeaderCell className = "tablez">Homeworks</Table.HeaderCell>
+                        <Table.HeaderCell className = "tablez">Completed?</Table.HeaderCell>
                     </Table.Row>
                     </Table.Header>
                     <Table.Body>
                     {homeworks.map((classs, index) => (
                         <Table.Row>
-                            <Table.Cell><h2 style={{ color: 'black', fontWeight: 'bold' }}>{classs}</h2></Table.Cell>
+                            <Table.Cell><h4 style={{ color: 'black', fontWeight: 'bold' }}>{classs}</h4></Table.Cell>
                             <Table.Cell><Button onClick = {() => handleClick(index)}>Yes</Button></Table.Cell>
                         </Table.Row>
                             ))}

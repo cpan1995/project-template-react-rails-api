@@ -91,6 +91,7 @@ code {
   padding-right: 20px;
   padding-top: 20px;
   padding-bottom: 20px;
+  
 }
 .ui.segment.studentContainer{
   margin-top: 30px;
@@ -113,6 +114,16 @@ code {
 
 
 
+
+.changeprofile {
+  border: 5px solid rgb(0, 0, 0);
+  border-radius: 10px;
+}
+
+.bodyz {
+  background: #94e8ee;
+  padding-bottom: 100px;
+}
 
 .mainpage {
   text-align: center;
@@ -158,10 +169,14 @@ code {
 /* /////////////////////////////////////////// */
 .thetabs {
   font-family:'Courier New', Courier, monospace;
-  background: #aca479;
+  background: #cecba4;
   padding: 20px;
 }
 
+.tablez {
+  font-size:20px;
+  font-weight: bold;
+}
 .theform {
   text-align: center;
   width: 800px;
@@ -184,7 +199,7 @@ code {
   border-radius: 20px;
   margin-left: 470px;
   margin-top: 100px;
-  background: #aca479;
+  background: #cecba4;
 }
 
 .logout {

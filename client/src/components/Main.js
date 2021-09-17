@@ -79,25 +79,11 @@ function Main(){
                   </p>
                 </Grid.Column>
               </Grid>
-            <Divider section />
-            <Grid columns={2} className = "segmentz">
-              <Grid.Column>
-                  <p>
-                    <Image
-                      className = "imagez"
-                      src="https://cdn.thisiswhyimbroke.com/images/robotic-smart-chess-board-square-off.gif"
-                    />
-                  </p>
-                </Grid.Column>
-                <Grid.Column>
-                  <h1 className = "newsheader">Chess Club</h1>
-                  <p className="linktext">
-                  The chess club has decreed that all current members should create an
-                  onlyfans account in order to show off their favorite mating positions
-                  </p>
-                </Grid.Column>
-              </Grid>
           </Segment> 
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
                   
         </div>
     )
